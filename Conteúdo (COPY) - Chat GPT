@@ -16,7 +16,9 @@ Início
 Sobre
 Cardápio
 Reservas
-Contato 2. Seção: Início (Hero Section)
+Contato 
+
+2. Seção: Início (Hero Section)
 Imagem de Fundo:
 Uma imagem de alta qualidade com pratos refinados, uma mesa bem montada e ambiente aconchegante.
 
@@ -29,7 +31,9 @@ Texto secundário:
 Botão:
 
 Ver Cardápio (ancora para a seção do cardápio)
-Fazer Reserva (ancora para a seção de reservas) 3. Seção: Sobre (Sobre o Restaurante)
+Fazer Reserva (ancora para a seção de reservas) 
+
+3. Seção: Sobre (Sobre o Restaurante)
 Título:
 Sobre Nós
 
@@ -74,7 +78,9 @@ Texto:
 Botão:
 
 Reservar Agora via WhatsApp
-O botão levará o usuário para um link direto de WhatsApp (https://api.whatsapp.com/send?phone=5511999999999&text=Olá, gostaria de fazer uma reserva no La Bellezza Bistro.) 6. Seção: Contato
+O botão levará o usuário para um link direto de WhatsApp (https://api.whatsapp.com/send?phone=5511999999999&text=Olá, gostaria de fazer uma reserva no La Bellezza Bistro.) 
+
+6. Seção: Contato
 Título:
 Contato
 
