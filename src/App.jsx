@@ -7,7 +7,7 @@ function App() {
     <div className="flex flex-col items-center">
       <Navbar />
       <HeroSection />
-      <AboutSection />
+      <AboutSection id="about" />
     </div>
   );
 }
