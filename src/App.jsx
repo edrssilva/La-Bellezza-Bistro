@@ -1,8 +1,14 @@
+import Navbar from "./components/Navbar";
+import HeroSection from "./components/HeroSection";
+import AboutSection from "./components/AboutSection";
+
 function App() {
   return (
-    <>
-      <h1>La Bellezza Bistrô</h1>
-    </>
+    <div className="flex flex-col items-center">
+      <Navbar />
+      <HeroSection />
+      <AboutSection />
+    </div>
   );
 }
 
