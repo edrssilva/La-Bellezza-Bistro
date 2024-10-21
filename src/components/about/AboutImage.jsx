@@ -1,4 +1,4 @@
-import aboutImage from "../assets/images/indoor-bistro-about-section-1980x1360.jpg";
+import aboutImage from "../../assets/images/indoor-bistro-about-section-1980x1360.jpg";
 
 function AboutImage() {
   return (

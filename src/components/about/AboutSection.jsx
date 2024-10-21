@@ -1,10 +1,10 @@
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "../SectionTitle";
 import AboutParagraph from "./AboutParagraph";
 import AboutImage from "./AboutImage";
 
 function AboutSection() {
   return (
-    <div className="w-2/4 my-16 flex justify-between gap-8">
+    <section className="w-2/4 my-16 flex justify-between gap-8">
       <div className="w-full">
         <SectionTitle>Sobre nós</SectionTitle>
         <AboutParagraph>
@@ -18,7 +18,7 @@ function AboutSection() {
       <div className="w-full">
         <AboutImage />
       </div>
-    </div>
+    </section>
   );
 }
 

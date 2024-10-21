@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
-import AboutSection from "./components/AboutSection";
+import AboutSection from "./components/about/AboutSection";
 
 function App() {
   return (
