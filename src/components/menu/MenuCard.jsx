@@ -2,7 +2,7 @@ function MenuCard(props) {
   const priceAndTitleStyle = "text-lg font-medium text-offblack";
 
   return (
-    <article className="w-72 h-auto flex flex-col justify-between p-2 bg-white rounded-lg shadow-md hover:scale-[1.05] transition-all cursor-pointer">
+    <article className="min-w-72 h-auto flex flex-col justify-between p-2 bg-white rounded-lg shadow-md hover:scale-[1.05] transition-all pointer-events-none">
       <img
         className="rounded w-full h-[196px]"
         src={props.itemImageUrl}

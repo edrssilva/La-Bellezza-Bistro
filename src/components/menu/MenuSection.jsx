@@ -1,5 +1,7 @@
+import { useState, useEffect, useRef } from "react";
 import SectionTitle from "../SectionTitle";
 import PrimaryButton from "../PrimaryButton";
+import { motion } from "framer-motion";
 import MenuCard from "./MenuCard";
 import risotoImage from "../../assets/images/dishes/risoto.png";
 import bifeImage from "../../assets/images/dishes/bife.png";
@@ -78,26 +80,60 @@ function MenuSection() {
     },
   ];
 
+  const carousel = useRef();
+  const innerCarousel = useRef(); // Adicionado para referenciar o conteúdo interno
+  const [carouselWidth, setCarouselWidth] = useState(0);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      const scrollWidth = innerCarousel.current?.scrollWidth || 0;
+      const offsetWidth = carousel.current?.offsetWidth || 0;
+      const newWidth = scrollWidth - offsetWidth;
+
+      setCarouselWidth(newWidth > 0 ? newWidth : 0); // Evitar valores negativos
+    };
+
+    // Calcular a largura ao montar o componente
+    updateWidth();
+
+    // Recalcular a largura ao redimensionar a janela
+    window.addEventListener("resize", updateWidth);
+
+    // Limpar o event listener quando o componente for desmontado
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+
   return (
-    <section className="w-2/4 my-16 flex justify-center gap-8">
+    <section className="w-2/4 my-16 flex justify-center gap-8 overflow-x-hidden">
       <div className="flex flex-col items-center gap-8">
         <SectionTitle>Cardápio</SectionTitle>
         <h2 className="font-serif font-bold text-2xl text-offblack text-left">
           Mais pedidos
         </h2>
 
-        <div className="grid grid-cols-1 gap-4 xl:grid-cols-2 xl:gap-8 2xl:grid-cols-3">
-          {dishes.map((dish) => (
-            <MenuCard
-              key={dish.id}
-              itemImageUrl={dish.imageUrl}
-              itemImageAlt={dish.title}
-              itemTitle={dish.title}
-              itemDescription={dish.description}
-              itemPrice={dish.price}
-            ></MenuCard>
-          ))}
-        </div>
+        <motion.div
+          ref={carousel}
+          className="max-w-[35%] py-2 cursor-grab"
+          whileTap={{ cursor: "grabbing" }}
+        >
+          <motion.div
+            ref={innerCarousel}
+            className="flex justify-start gap-8"
+            drag="x"
+            dragConstraints={{ right: 0, left: -carouselWidth }}
+          >
+            {dishes.map((dish) => (
+              <MenuCard
+                key={dish.id}
+                itemImageUrl={dish.imageUrl}
+                itemImageAlt={dish.title}
+                itemTitle={dish.title}
+                itemDescription={dish.description}
+                itemPrice={dish.price}
+              ></MenuCard>
+            ))}
+          </motion.div>
+        </motion.div>
         <PrimaryButton>Cardápio completo</PrimaryButton>
       </div>
     </section>
