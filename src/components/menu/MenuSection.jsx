@@ -1,5 +1,7 @@
 import SectionTitle from "../SectionTitle";
 import PrimaryButton from "../PrimaryButton";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import MenuCard from "./MenuCard";
 import risotoImage from "../../assets/images/dishes/risoto.png";
 import bifeImage from "../../assets/images/dishes/bife.png";
@@ -78,6 +80,37 @@ function MenuSection() {
     },
   ];
 
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
+
+  const dishesCards = dishes.map((dish) => (
+    <MenuCard
+      key={dish.id}
+      itemImageUrl={dish.imageUrl}
+      itemImageAlt={dish.title}
+      itemTitle={dish.title}
+      itemDescription={dish.description}
+      itemPrice={dish.price}
+    ></MenuCard>
+  ));
+
   return (
     <section className="w-2/4 my-16 flex justify-center gap-8">
       <div className="flex flex-col items-center gap-8">
@@ -86,18 +119,8 @@ function MenuSection() {
           Mais pedidos
         </h2>
 
-        <div className="grid grid-cols-1 gap-4 xl:grid-cols-2 xl:gap-8 2xl:grid-cols-3">
-          {dishes.map((dish) => (
-            <MenuCard
-              key={dish.id}
-              itemImageUrl={dish.imageUrl}
-              itemImageAlt={dish.title}
-              itemTitle={dish.title}
-              itemDescription={dish.description}
-              itemPrice={dish.price}
-            ></MenuCard>
-          ))}
-        </div>
+        <Carousel responsive={responsive}>{dishesCards}</Carousel>
+
         <PrimaryButton>Cardápio completo</PrimaryButton>
       </div>
     </section>
