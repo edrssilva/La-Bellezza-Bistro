@@ -86,7 +86,7 @@ function MenuSection() {
           Mais pedidos
         </h2>
 
-        <div className="grid grid-cols-1 gap-4 xl:grid-cols-2 xl:gap-8 2xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 xl:grid-cols-2 xl:gap-8">
           {dishes.map((dish) => (
             <MenuCard
               key={dish.id}
