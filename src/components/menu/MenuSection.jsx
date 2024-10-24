@@ -1,5 +1,8 @@
 import SectionTitle from "../SectionTitle";
 import PrimaryButton from "../PrimaryButton";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import MenuCard from "./MenuCard";
 import risotoImage from "../../assets/images/dishes/risoto.png";
 import bifeImage from "../../assets/images/dishes/bife.png";
@@ -78,6 +81,41 @@ function MenuSection() {
     },
   ];
 
+  const sliderSettings = {
+    accessibility: true,
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <section className="w-2/4 my-16 flex justify-center gap-8">
       <div className="flex flex-col items-center gap-8">
@@ -86,18 +124,21 @@ function MenuSection() {
           Mais pedidos
         </h2>
 
-        <div className="grid grid-cols-1 gap-4 xl:grid-cols-2 xl:gap-8 2xl:grid-cols-3">
-          {dishes.map((dish) => (
-            <MenuCard
-              key={dish.id}
-              itemImageUrl={dish.imageUrl}
-              itemImageAlt={dish.title}
-              itemTitle={dish.title}
-              itemDescription={dish.description}
-              itemPrice={dish.price}
-            ></MenuCard>
-          ))}
+        <div className="slider-container">
+          <Slider {...sliderSettings}>
+            {dishes.map((dish) => (
+              <MenuCard
+                key={dish.id}
+                itemImageUrl={dish.imageUrl}
+                itemImageAlt={dish.title}
+                itemTitle={dish.title}
+                itemDescription={dish.description}
+                itemPrice={dish.price}
+              />
+            ))}
+          </Slider>
         </div>
+
         <PrimaryButton>Cardápio completo</PrimaryButton>
       </div>
     </section>
